@@ -14,18 +14,18 @@ BaslerCapture::BaslerCapture()
 
 		GenApi::CIntegerPtr Width = nodemap.GetNode("Width");
 		GenApi::CIntegerPtr Height = nodemap.GetNode("Height");
-		GenApi::CBooleanPtr CenterX = nodemap.GetNode("CenterX");
-		GenApi::CBooleanPtr CenterY = nodemap.GetNode("CenterY");
 
-		GenApi::CFloatPtr Exposure = nodemap.GetNode("ExposureTime");
-		GenApi::CEnumerationPtr ExposureAuto = nodemap.GetNode("ExposureAuto");
+		((GenApi::CBooleanPtr)nodemap.GetNode("CenterX"))->SetValue(true);
+		((GenApi::CBooleanPtr)nodemap.GetNode("CenterY"))->SetValue(true);
 
-		CenterX->SetValue(true);
-		CenterY->SetValue(true);
+		((GenApi::CFloatPtr)nodemap.GetNode("ExposureTime"))->SetValue(33000);
+		((GenApi::CEnumerationPtr)nodemap.GetNode("ExposureAuto"))->SetIntValue(0);
+
+		((GenApi::CEnumerationPtr)nodemap.GetNode("BalanceWhiteAuto"))->SetIntValue(2);
+
 		Width->SetValue(1920);
 		Height->SetValue(1080);
-		Exposure->SetValue(33000);
-		ExposureAuto->SetIntValue(0);
+
 
 		this->frameHeight = (int) Height->GetValue();
 		this->frameWidth = (int) Width->GetValue();

@@ -13,7 +13,7 @@ int main()
 	// 'videoconvert' the receiver will not read the frames, even though 'videoconvert' is not present
 	// in the original working pipeline
 
-	VideoCapture cap("udpsrc port=5000 caps = \"application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96\" ! rtph264depay ! decodebin ! videoconvert ! appsink",CAP_GSTREAMER);
+	VideoCapture cap("udpsrc port=5000 caps = \"application/x-rtp, payload=127\" ! rtph264depay ! avdec_h264 ! autovideoconvert ! appsink sync=false",CAP_GSTREAMER);
 
 	if(!cap.isOpened())
 	{
