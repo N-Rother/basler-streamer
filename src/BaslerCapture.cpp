@@ -12,6 +12,7 @@ BaslerCapture::BaslerCapture()
 		GenApi::INodeMap &nodemap = camera->GetNodeMap();
 		camera->Open();
 
+
 		GenApi::CIntegerPtr Width = nodemap.GetNode("Width");
 		GenApi::CIntegerPtr Height = nodemap.GetNode("Height");
 
@@ -22,6 +23,9 @@ BaslerCapture::BaslerCapture()
 		((GenApi::CEnumerationPtr)nodemap.GetNode("ExposureAuto"))->SetIntValue(0);
 
 		((GenApi::CEnumerationPtr)nodemap.GetNode("BalanceWhiteAuto"))->SetIntValue(2);
+
+		((GenApi::CEnumerationPtr)nodemap.GetNode("LightSourcePreset"))->SetIntValue(1);
+
 
 		Width->SetValue(1920);
 		Height->SetValue(1080);
